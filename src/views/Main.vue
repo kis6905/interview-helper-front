@@ -13,7 +13,7 @@
         block
         variant="outline-danger"
         size="lg"
-        data-path="/interview"
+        data-path="/interview/step1"
         @click="handleClickBtn">
         면접 시작
       </b-button>
@@ -21,7 +21,7 @@
         block
         variant="outline-success"
         size="lg"
-        data-path="/interview/finished"
+        data-path="/finishedinterview"
         @click="handleClickBtn">
         면접 완료 목록
       </b-button>
@@ -54,7 +54,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main {
-  margin: 1rem;
-}
 </style>

@@ -47,8 +47,31 @@ export default {
     }
     return axios.post(`${apiDomain}${url}`, form, postConfig)
   },
-  getQuestionSetList () {
-    return this.requestGet('/question/set/list')
+  async getQuestionSetList () {
+    // return this.requestGet('/question/set/list')
+    return [{
+      setId: '1',
+      setName: '서버개발자 - 신입',
+      author: 'develeaf',
+      questionList: [{
+        questionId: '1',
+        question: 'Java란?'
+      }, {
+        questionId: '2',
+        question: 'Spring 이란?'
+      }]
+    }, {
+      setId: '2',
+      setName: '안드로이드개발자 - 신입',
+      author: 'develeaf',
+      questionList: [{
+        questionId: '3',
+        question: 'Java란?'
+      }, {
+        questionId: '4',
+        question: 'Kotlin 이란?'
+      }]
+    }]
   },
   getQuestionList (setId) {
     return this.requestGet(`/question/list/${setId}`)

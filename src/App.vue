@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header></Header>
-    <router-view/>
+    <router-view class="content" />
   </div>
 </template>
 
@@ -21,5 +21,8 @@ export default {
   height: 100vh;
   background-color: #2f2f2f;
   color: white;
+}
+.content {
+  padding: 1rem;
 }
 </style>

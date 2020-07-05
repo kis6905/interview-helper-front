@@ -1,6 +1,6 @@
 <template>
-  <div class="main">
-    <h1>interview question set page</h1>
+  <div>
+    <h1>InterviewStep1 page</h1>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import pageMixin from '@/mixins/page'
 
 export default {
-  name: 'InterviewQuestionSet',
+  name: 'InterviewStep1',
   mixins: [pageMixin],
   data: () => {
     return {

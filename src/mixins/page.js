@@ -2,12 +2,12 @@ import { mapMutations } from 'vuex'
 
 export default {
   created () {
-    console.log('page mixin - created()')
-    this.setMain(false)
+    this.page_setMain(false)
   },
   methods: {
-    ...mapMutations([
-      'setMain'
-    ])
+    ...mapMutations({
+      page_setMain: 'setMain',
+      page_setTitle: 'setTitle'
+    })
   }
 }

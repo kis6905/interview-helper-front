@@ -16,6 +16,7 @@ const routes = [
   }, {
     path: '/question/set/detail',
     name: 'QuestionSetDetail',
+    props: true,
     component: () => import('../views/questionset/QuestionSetDetail.vue')
   }, {
     path: '/interview/step1',
@@ -32,6 +33,7 @@ const routes = [
   }, {
     path: '/finishedinterview/detail',
     name: 'FinishedInterviewDetail',
+    props: true,
     component: () => import('../views/finishedinterview/FinishedInterviewDetail.vue')
   }
 ]

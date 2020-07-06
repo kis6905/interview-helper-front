@@ -1,6 +1,17 @@
 <template>
   <div>
-    <h1>QuestionSetList page</h1>
+    <b-button
+      class="mb-2"
+      block
+      pill
+      variant="outline-success"
+      @click="handleClickAdd">
+      <b-icon-plus-circle-fill></b-icon-plus-circle-fill> 만들기
+    </b-button>
+    <ListCardType
+      :items="items"
+      @click-item="handleClickItem">
+    </ListCardType>
   </div>
 </template>
 
@@ -12,14 +23,24 @@ export default {
   mixins: [pageMixin],
   data: () => {
     return {
-      setList: []
+      items: []
     }
   },
   async created () {
-    this.setList = await this.API.getQuestionSetList()
-    console.log(this.setList)
+    this.page_setTitle({ text: '질문 Set', icon: 'card-list' })
+    const setList = await this.API.getQuestionSetList()
+    this.items = setList.map(set => {
+      return { ...set, title: set.setName }
+    })
   },
   methods: {
+    handleClickItem (item) {
+      console.log(item)
+      this.$router.push({ name: 'QuestionSetDetail', params: { detail: item, mode: 'detail' } })
+    },
+    handleClickAdd () {
+      console.log('click Add')
+    }
   }
 }
 </script>

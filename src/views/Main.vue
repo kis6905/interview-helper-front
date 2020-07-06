@@ -6,7 +6,7 @@
         variant="outline-warning"
         size="lg"
         data-path="/question/set"
-        @click="handleClickBtn">
+        @click="handleClickMenuBtn">
         질문 Set
       </b-button>
       <b-button
@@ -14,7 +14,7 @@
         variant="outline-danger"
         size="lg"
         data-path="/interview/step1"
-        @click="handleClickBtn">
+        @click="handleClickMenuBtn">
         면접 시작
       </b-button>
       <b-button
@@ -22,7 +22,7 @@
         variant="outline-success"
         size="lg"
         data-path="/finishedinterview"
-        @click="handleClickBtn">
+        @click="handleClickMenuBtn">
         면접 완료 목록
       </b-button>
     </div>
@@ -36,6 +36,7 @@ export default {
   name: 'Main',
   created () {
     this.setMain(true)
+    this.setTitle({ text: 'Interview Helper' })
   },
   data: () => {
     return {
@@ -44,9 +45,10 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'setMain'
+      'setMain',
+      'setTitle'
     ]),
-    handleClickBtn (event) {
+    handleClickMenuBtn (event) {
       this.$router.push(event.target.dataset.path)
     }
   }

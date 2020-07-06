@@ -5,18 +5,26 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isMain: true
+    isMain: true,
+    title: {
+      text: 'Interview Helper',
+      icon: ''
+    }
   },
   getters: {
     isMain (state) {
-      console.log('getter isMain()', state.isMain)
       return state.isMain
+    },
+    title (state) {
+      return state.title
     }
   },
   mutations: {
     setMain (state, value) {
-      console.log('mutation setMain()', value)
       state.isMain = value
+    },
+    setTitle (state, payload) {
+      state.title = { text: payload.text, icon: `${payload.icon ? 'b-icon-' + payload.icon : ''}` }
     }
   },
   actions: {

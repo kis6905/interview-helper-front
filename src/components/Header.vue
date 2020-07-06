@@ -4,7 +4,10 @@
       <b-icon-chevron-left v-if="!isMain" @click="handleBack"></b-icon-chevron-left>
     </div>
     <div class="title">
-      Interview Helper
+      <span class="title-icon">
+        <component v-if="title.icon" :is="title.icon"></component>
+      </span>
+      {{ title.text }}
     </div>
     <div class="right-btn-area">
     </div>
@@ -23,7 +26,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'isMain'
+      'isMain',
+      'title'
     ])
   }
 }
@@ -46,6 +50,10 @@ export default {
   .title {
     text-align: center;
     flex: 1;
+    .title-icon {
+      font-size: 1.5rem;
+      padding-right: 0.5rem;
+    }
   }
   .right-btn-area {
     flex: 0.2;

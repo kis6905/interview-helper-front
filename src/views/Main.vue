@@ -1,30 +1,34 @@
 <template>
-  <div class="main">
+  <div>
     <div>
-      <b-button
+      <v-btn
+        class="mb-2"
         block
-        variant="outline-warning"
-        size="lg"
+        large
+        outlined color="blue darken-1"
         data-path="/question/set"
         @click="handleClickMenuBtn">
+        <v-icon>mdi-account</v-icon>
         질문 Set
-      </b-button>
-      <b-button
+      </v-btn>
+      <v-btn
+        class="mb-2"
         block
-        variant="outline-danger"
-        size="lg"
+        large
+        outlined color="deep-purple accent-1"
         data-path="/interview/step1"
         @click="handleClickMenuBtn">
         면접 시작
-      </b-button>
-      <b-button
+      </v-btn>
+      <v-btn
+        class="mb-2"
         block
-        variant="outline-success"
-        size="lg"
+        large
+        outlined color="green lighten-2"
         data-path="/finishedinterview"
         @click="handleClickMenuBtn">
         면접 완료 목록
-      </b-button>
+      </v-btn>
     </div>
   </div>
 </template>
@@ -49,7 +53,7 @@ export default {
       'setTitle'
     ]),
     handleClickMenuBtn (event) {
-      this.$router.push(event.target.dataset.path)
+      this.$router.push(event.currentTarget.dataset.path)
     }
   }
 }

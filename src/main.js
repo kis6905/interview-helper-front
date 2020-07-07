@@ -10,9 +10,10 @@ import ListCardType from '@/components/ListCardType'
 import VueLodash from 'vue-lodash'
 import lodash from 'lodash'
 
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css'
+// import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap-vue/dist/bootstrap-vue.css'
+// import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css'
+import vuetify from './plugins/vuetify'
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
@@ -28,5 +29,6 @@ Vue.component('ListCardType', ListCardType)
 new Vue({
   router,
   store,
+  vuetify,
   render: h => h(App)
 }).$mount('#app')

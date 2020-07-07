@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <v-app>
     <Header></Header>
     <router-view class="content" />
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -17,11 +17,6 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  height: 100vh;
-  background-color: #2f2f2f;
-  color: white;
-}
 .content {
   padding: 1rem;
 }

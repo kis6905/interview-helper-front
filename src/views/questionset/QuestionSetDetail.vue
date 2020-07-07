@@ -1,7 +1,31 @@
 <template>
   <div>
-    {{ detail.setId }}<br/>
-    {{ detail.setName }}<br/>
+    <b-container>
+      <b-row class="mb-3">
+        <b-col cols="3">
+          <label for="setId" class="pt-2">Set ID</label>
+        </b-col>
+        <b-col cols="9">
+          <b-form-input
+            id="setId"
+            v-model="detail.setId"
+            :disabled="isDetail">
+          </b-form-input>
+        </b-col>
+      </b-row>
+      <b-row class="mb-3">
+        <b-col cols="3">
+          <label for="setName" class="pt-2">Set 명</label>
+        </b-col>
+        <b-col cols="9">
+          <b-form-input
+            id="setName"
+            v-model="detail.setId"
+            :disabled="isDetail">
+          </b-form-input>
+        </b-col>
+      </b-row>
+    </b-container>
     <b-button
       class="mb-2"
       block

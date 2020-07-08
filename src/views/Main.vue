@@ -8,7 +8,6 @@
         outlined color="blue darken-1"
         data-path="/question/set"
         @click="handleClickMenuBtn">
-        <v-icon>mdi-account</v-icon>
         질문 Set
       </v-btn>
       <v-btn

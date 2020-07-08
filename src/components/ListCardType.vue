@@ -1,5 +1,23 @@
 <template>
   <div>
+    <v-card
+      class="card"
+      color="#2a3c56"
+      dark
+      v-for="(item, index) in items"
+      :key="index"
+      @click="$emit('click-item', item)">
+      <div class="card-item">
+        <div class="set-title">
+          {{ item.title }}
+        </div>
+        <div class="arrow-right">
+          <v-icon>mdi-chevron-right</v-icon>
+        </div>
+      </div>
+    </v-card>
+
+    <!--
     <b-card
       v-for="(item, index) in items"
       :key="index"
@@ -30,6 +48,7 @@
         </div>
       </div>
     </b-card>
+    -->
   </div>
 </template>
 
@@ -59,8 +78,9 @@ export default {
 
   .card-item {
     display: flex;
+    padding: 1rem;
 
-    .title {
+    .set-title {
       flex: 1.2;
       margin-right: 0.5rem;
     }

@@ -1,13 +1,13 @@
 <template>
   <div>
-    <b-button
+    <v-btn
       class="mb-2"
       block
-      pill
-      variant="outline-success"
+      outlined
+      color="green accent-4"
       @click="handleClickAdd">
-      <b-icon-plus-circle-fill></b-icon-plus-circle-fill> 만들기
-    </b-button>
+      <v-icon class="mr-1">mdi-plus-circle</v-icon>만들기
+    </v-btn>
     <ListCardType
       :items="items"
       @click-item="handleClickItem">
@@ -35,11 +35,10 @@ export default {
   },
   methods: {
     handleClickItem (item) {
-      console.log(item)
       this.$router.push({ name: 'QuestionSetDetail', params: { detail: item, mode: 'detail' } })
     },
     handleClickAdd () {
-      console.log('click Add')
+      this.$router.push({ name: 'QuestionSetDetail', params: { mode: 'regist' } })
     }
   }
 }

@@ -20,4 +20,7 @@ export default {
 .content {
   padding: 1rem;
 }
+.theme--dark.v-application {
+  background: #0e1d33 !important;
+}
 </style>

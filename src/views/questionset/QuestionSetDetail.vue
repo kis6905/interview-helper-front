@@ -1,39 +1,64 @@
 <template>
   <div>
-    <b-container>
-      <b-row class="mb-3">
-        <b-col cols="3">
-          <label for="setId" class="pt-2">Set ID</label>
-        </b-col>
-        <b-col cols="9">
-          <b-form-input
-            id="setId"
-            v-model="detail.setId"
-            :disabled="isDetail">
-          </b-form-input>
-        </b-col>
-      </b-row>
-      <b-row class="mb-3">
-        <b-col cols="3">
-          <label for="setName" class="pt-2">Set 명</label>
-        </b-col>
-        <b-col cols="9">
-          <b-form-input
-            id="setName"
-            v-model="detail.setId"
-            :disabled="isDetail">
-          </b-form-input>
-        </b-col>
-      </b-row>
-    </b-container>
-    <b-button
-      class="mb-2"
-      block
-      pill
-      variant="outline-warning"
-      @click="handleClickModify">
-      <b-icon-pencil></b-icon-pencil> 수정하기
-    </b-button>
+    <v-form v-model="validForm">
+      <v-container>
+        <v-row>
+          <v-col cols="12">
+            <v-text-field
+              v-model="detail.setId"
+              label="Set ID"
+              required
+              :disabled="true"
+              placeholder="Set ID는 자동생성 됩니다.">
+            </v-text-field>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12">
+            <v-text-field
+              v-model="detail.setName"
+              :rules="validationRules.setNameRule"
+              label="Set 명"
+              required
+              :disabled="isDetail">
+            </v-text-field>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-form>
+    <div class="btn-area">
+      <v-btn
+        class="mb-2"
+        block
+        outlined
+        color="orange darken-1"
+        v-if="isDetail"
+        @click="handleClickModify">
+        <v-icon class="mr-1">mdi-pencil</v-icon>수정하기
+      </v-btn>
+      <v-row v-if="isRegist || isModify">
+        <v-col cols="6">
+          <v-btn
+            class="mb-2"
+            block
+            outlined
+            color="yellow darken-1"
+            @click="handleClickCancel">
+            <v-icon class="mr-1">mdi-undo-variant</v-icon>취소
+          </v-btn>
+        </v-col>
+        <v-col cols="6">
+          <v-btn
+            class="mb-2"
+            block
+            outlined
+            color="green accent-4"
+            @click="handleClickSave">
+            <v-icon class="mr-1">mdi-check</v-icon>저장
+          </v-btn>
+        </v-col>
+      </v-row>
+    </div>
   </div>
 </template>
 
@@ -46,7 +71,20 @@ export default {
   data: () => {
     return {
       originalDetail: {},
-      detail: {},
+      detail: {
+        setId: '',
+        setName: ''
+      },
+
+      validForm: false,
+      validationRules: {
+        setIdRule: [
+          (v) => !!v || 'Set ID는 필수입니다.'
+        ],
+        setNameRule: [
+          (v) => !!v || 'Set 명은 필수입니다.'
+        ]
+      },
 
       isDetail: false,
       isModify: false,
@@ -54,27 +92,48 @@ export default {
     }
   },
   created () {
-    this.originalDetail = this.$route.params.detail
     const mode = this.$route.params.mode
     if (mode === 'detail') {
+      this.originalDetail = this.$route.params.detail
+      this.init()
       this.isDetail = true
+      this.validForm = true
     } else {
       this.isRegist = true
     }
-
-    this.init()
   },
   methods: {
     init () {
       this.detail = this._.cloneDeep(this.originalDetail)
     },
-    handleClickModify (event) {
+    handleClickModify () {
       this.isModify = true
       this.isDetail = false
+    },
+    handleClickCancel () {
+      if (this.isRegist) {
+        this.$router.back()
+      } else {
+        this.init()
+        this.isModify = false
+        this.isDetail = true
+      }
+    },
+    handleClickSave () {
+      if (this.isRegist) {
+        this.$router.back()
+        // TODO: 기능구현
+      } else {
+        this.isModify = false
+        this.isDetail = true
+      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.btn-area {
+  padding: 0 12px;
+}
 </style>

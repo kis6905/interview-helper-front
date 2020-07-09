@@ -82,16 +82,19 @@ const setList = [{
   }, {
     questionId: '2',
     question: 'Spring 이란?'
+  }, {
+    questionId: '3',
+    question: 'IoC 란?''
   }]
 }, {
   setId: '2',
   setName: '안드로이드개발자 - 신입',
   author: 'develeaf',
   questionList: [{
-    questionId: '3',
+    questionId: '11',
     question: 'Java란?'
   }, {
-    questionId: '4',
+    questionId: '12',
     question: 'Kotlin 이란?'
   }]
 }]

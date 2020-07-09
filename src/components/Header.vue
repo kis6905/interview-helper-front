@@ -1,11 +1,11 @@
 <template>
   <div class="header">
     <div class="left-btn-area">
-      <b-icon-chevron-left v-if="!isMain" @click="handleBack"></b-icon-chevron-left>
+      <v-icon v-if="!isMain" @click="handleBack">mdi-chevron-left</v-icon>
     </div>
     <div class="title">
       <span class="title-icon">
-        <component v-if="title.icon" :is="title.icon"></component>
+        <v-icon v-if="title.icon">{{ title.icon }}</v-icon>
       </span>
       {{ title.text }}
     </div>
@@ -20,7 +20,8 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'Header',
   methods: {
-    handleBack () {
+    handleBack (event) {
+      event.currentTarget.blur()
       this.$router.back()
     }
   },
@@ -52,7 +53,7 @@ export default {
     flex: 1;
     .title-icon {
       font-size: 1.5rem;
-      padding-right: 0.5rem;
+      padding-right: 0.2rem;
     }
   }
   .right-btn-area {

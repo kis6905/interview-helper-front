@@ -5,7 +5,7 @@ const getConfig = {
     'Access-Control-Allow-Origin': '*'
   }
 }
-const postConfig = {
+const formConfig = {
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'multipart/form-data'
@@ -25,19 +25,10 @@ export default {
     const response = await axios.post(`${apiDomain}/login`, data, requestConfigForLogin)
     const jwtHeader = response.headers['jwt-header']
     getConfig.headers['jwt-header'] = jwtHeader
-    postConfig.headers['jwt-header'] = jwtHeader
+    formConfig.headers['jwt-header'] = jwtHeader
     return response
   },
-  requestGet (url) {
-    if (process.env.VUE_APP_MODE === 'L') {
-      // getConfig.headers['jwt-header'] = jwtForLocal
-    }
-    return axios.get(`${apiDomain}${url}`, getConfig)
-  },
-  requestPost (url, data) {
-    if (process.env.VUE_APP_MODE === 'L') {
-      // postConfig.headers['jwt-header'] = jwtForLocal
-    }
+  request (url, method, data) {
     const form = new FormData()
     for (const paramName in data) {
       const value = data[paramName]
@@ -45,35 +36,62 @@ export default {
         form.append(paramName, data[paramName])
       }
     }
-    return axios.post(`${apiDomain}${url}`, form, postConfig)
+    if (process.env.VUE_APP_MODE === 'L') {
+      // formConfig.headers['jwt-header'] = jwtForLocal
+    }
+    formConfig.url = url
+    formConfig.method = method
+    formConfig.data = form
+    return axios.request(formConfig)
   },
+  requestGet (url) {
+    if (process.env.VUE_APP_MODE === 'L') {
+      // getConfig.headers['jwt-header'] = jwtForLocal
+    }
+    return axios.get(`${apiDomain}${url}`, getConfig)
+  },
+
   async getQuestionSetList () {
     // return this.requestGet('/question/set/list')
-    return [{
-      setId: '1',
-      setName: '서버개발자 - 신입',
-      author: 'develeaf',
-      questionList: [{
-        questionId: '1',
-        question: 'Java란?'
-      }, {
-        questionId: '2',
-        question: 'Spring 이란?'
-      }]
-    }, {
-      setId: '2',
-      setName: '안드로이드개발자 - 신입',
-      author: 'develeaf',
-      questionList: [{
-        questionId: '3',
-        question: 'Java란?'
-      }, {
-        questionId: '4',
-        question: 'Kotlin 이란?'
-      }]
-    }]
+    return setList
   },
-  getQuestionList (setId) {
-    return this.requestGet(`/question/list/${setId}`)
+  async saveQuestionSet (set) {
+    // return this.request('/question/set', 'post', set)
+    let maxSetId = setList.reduce((e1, e2) => Number(e1.setId) < Number(e2.setId) ? e2 : e1, { setId: -1 })
+    maxSetId = Number(maxSetId.setId) + 1
+    setList.push({ ...set, setId: maxSetId })
+  },
+  async modifyQuestionSet (set) {
+    // return this.request('/question/set', 'put', set)
+    const foundSet = setList.find((e) => e.setId === set.setId)
+    foundSet.setName = set.setName
+  },
+  async getQuestionList (setId) {
+    // return this.requestGet(`/question/list/${setId}`)
+    return setList.find((set) => set.setId === setId).questionList
   }
 }
+
+const setList = [{
+  setId: '1',
+  setName: '서버개발자 - 신입',
+  author: 'develeaf',
+  questionList: [{
+    questionId: '1',
+    question: 'Java란?'
+  }, {
+    questionId: '2',
+    question: 'Spring 이란?'
+  }]
+}, {
+  setId: '2',
+  setName: '안드로이드개발자 - 신입',
+  author: 'develeaf',
+  questionList: [{
+    questionId: '3',
+    question: 'Java란?'
+  }, {
+    questionId: '4',
+    question: 'Kotlin 이란?'
+  }]
+}]

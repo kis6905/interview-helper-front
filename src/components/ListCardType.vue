@@ -16,7 +16,18 @@
         </div>
       </div>
     </v-card>
-
+    <v-card
+      v-if="!items || items.length === 0"
+      class="empty-card"
+      color="#2a3c56"
+      dark>
+      <div class="empty-card-body text-center">
+        <div class="empty-card-body-content">
+          <v-icon>mdi-alert-circle</v-icon>
+          데이터가 없습니다!
+        </div>
+      </div>
+    </v-card>
     <!--
     <b-card
       v-for="(item, index) in items"
@@ -95,7 +106,7 @@ export default {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 5rem;
+  height: 7rem;
 
   .empty-card-body-content {
     flex: 1;

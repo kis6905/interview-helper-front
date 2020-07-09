@@ -78,9 +78,6 @@ export default {
 
       validForm: false,
       validationRules: {
-        setIdRule: [
-          (v) => !!v || 'Set ID는 필수입니다.'
-        ],
         setNameRule: [
           (v) => !!v || 'Set 명은 필수입니다.'
         ]
@@ -119,11 +116,12 @@ export default {
         this.isDetail = true
       }
     },
-    handleClickSave () {
+    async handleClickSave () {
       if (this.isRegist) {
+        await this.API.saveQuestionSet(this.detail)
         this.$router.back()
-        // TODO: 기능구현
       } else {
+        await this.API.modifyQuestionSet(this.detail)
         this.isModify = false
         this.isDetail = true
       }

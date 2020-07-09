@@ -24,7 +24,7 @@ export default new Vuex.Store({
       state.isMain = value
     },
     setTitle (state, payload) {
-      state.title = { text: payload.text, icon: `${payload.icon ? 'b-icon-' + payload.icon : ''}` }
+      state.title = { text: payload.text, icon: payload.icon }
     }
   },
   actions: {

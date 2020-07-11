@@ -14,6 +14,9 @@ export default {
     return {
     }
   },
+  created () {
+    this.page_setTitle({ text: '면접 완료 목록', icon: 'mdi-file-account-outline' })
+  },
   methods: {
   }
 }

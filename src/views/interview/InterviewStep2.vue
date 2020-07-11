@@ -12,7 +12,11 @@ export default {
   mixins: [pageMixin],
   data: () => {
     return {
+      questionSetList: []
     }
+  },
+  async created () {
+    this.questionSetList = this.$route.params.questionSetList
   },
   methods: {
   }

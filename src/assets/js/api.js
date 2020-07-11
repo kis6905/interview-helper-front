@@ -84,7 +84,7 @@ const setList = [{
     question: 'Spring 이란?'
   }, {
     questionId: '3',
-    question: 'IoC 란?''
+    question: 'IoC 란?'
   }]
 }, {
   setId: '2',

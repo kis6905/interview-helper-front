@@ -65,25 +65,39 @@ export default {
     // return this.request('/question/set', 'put', set)
     const foundSet = setList.find((e) => e.setId === set.setId)
     foundSet.setName = set.setName
-  },
-  async getQuestionList (setId) {
-    // return this.requestGet(`/question/list/${setId}`)
-    return setList.find((set) => set.setId === setId).questionList
+    foundSet.questionList = set.questionList
   }
 }
 
 const setList = [{
+  setId: '3',
+  setName: '공통 질문',
+  author: 'develeaf',
+  questionList: [{
+    questionId: '1',
+    question: '자신의 장단점?'
+  }, {
+    questionId: '2',
+    question: '타인과 갈등이 생기면 어떻게 해결하는가?'
+  }, {
+    questionId: '3',
+    question: '파견근무는 괜찮은가?'
+  }, {
+    questionId: '4',
+    question: '본인의 멘탈은 강한편이라고 생각하는가?'
+  }]
+}, {
   setId: '1',
   setName: '서버개발자 - 신입',
   author: 'develeaf',
   questionList: [{
-    questionId: '1',
+    questionId: '11',
     question: 'Java란?'
   }, {
-    questionId: '2',
+    questionId: '12',
     question: 'Spring 이란?'
   }, {
-    questionId: '3',
+    questionId: '13',
     question: 'IoC 란?'
   }]
 }, {
@@ -91,10 +105,10 @@ const setList = [{
   setName: '안드로이드개발자 - 신입',
   author: 'develeaf',
   questionList: [{
-    questionId: '11',
+    questionId: '21',
     question: 'Java란?'
   }, {
-    questionId: '12',
+    questionId: '22',
     question: 'Kotlin 이란?'
   }]
 }]

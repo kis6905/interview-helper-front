@@ -18,10 +18,10 @@
       class="mb-2"
       block
       outlined
-      color="indigo lighten-5"
+      color="green"
       :disabled="selectedQuestionSetIds.length === 0"
       @click="handleNextStep">
-      <v-icon class="mr-1">mdi-arrow-right-drop-circle-outline</v-icon>시작
+      Next Step<v-icon class="ml-1">mdi-arrow-right</v-icon>
     </v-btn>
   </div>
 </template>

@@ -21,7 +21,7 @@
                 {{ (index + 1) + '. ' + question.question }}
               </v-col>
             </v-row>
-            <v-row class="answer">
+            <v-row class="align-items-center">
               <v-col cols="2" class="pt-0 pb-0">
                 평점
               </v-col>
@@ -36,7 +36,7 @@
                 </v-rating>
               </v-col>
             </v-row>
-            <v-row class="answer">
+            <v-row class="align-items-center">
               <v-col cols="2" class="pt-0 pb-0">
                 의견
               </v-col>
@@ -52,6 +52,14 @@
         </v-row>
       </v-container>
     </div>
+    <v-btn
+      class="mb-2"
+      block
+      color="green"
+      outlined
+      @click="handleNextStep">
+      Next Step<v-icon class="ml-1">mdi-arrow-right</v-icon>
+    </v-btn>
   </div>
 </template>
 
@@ -70,6 +78,9 @@ export default {
     console.log(this.store_interview)
   },
   methods: {
+    handleNextStep () {
+      this.$router.push({ name: 'InterviewStep3' })
+    }
   },
   computed: {
     ...mapGetters({
@@ -80,7 +91,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.answer {
-  align-items: center;
-}
 </style>

@@ -26,4 +26,7 @@ export default {
 .v-toolbar__content {
   padding: 4px 4px !important;
 }
+.align-items-center {
+  align-items: center;
+}
 </style>

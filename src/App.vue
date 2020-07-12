@@ -23,4 +23,7 @@ export default {
 .theme--dark.v-application {
   background: #0e1d33 !important;
 }
+.v-toolbar__content {
+  padding: 4px 4px !important;
+}
 </style>

@@ -27,6 +27,10 @@ const routes = [
     name: 'InterviewStep2',
     component: () => import('../views/interview/InterviewStep2.vue')
   }, {
+    path: '/interview/step3',
+    name: 'InterviewStep3',
+    component: () => import('../views/interview/InterviewStep3.vue')
+  }, {
     path: '/finishedinterview',
     name: 'FinishedInterviewList',
     component: () => import('../views/finishedinterview/FinishedInterviewList.vue')

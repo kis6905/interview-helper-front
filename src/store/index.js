@@ -9,6 +9,12 @@ export default new Vuex.Store({
     title: {
       text: 'Interview Helper',
       icon: ''
+    },
+    interview: {
+      interviewDate: '',
+      interviewer: '',
+      candidate: '',
+      questionSetList: []
     }
   },
   getters: {
@@ -17,6 +23,9 @@ export default new Vuex.Store({
     },
     title (state) {
       return state.title
+    },
+    interview (state) {
+      return state.interview
     }
   },
   mutations: {
@@ -25,6 +34,28 @@ export default new Vuex.Store({
     },
     setTitle (state, payload) {
       state.title = { text: payload.text, icon: payload.icon }
+    },
+    initInterview (state, payload) {
+      const today = new Date()
+      state.interview = {
+        interviewDate: today.yyyymmdd('yyyy-mm-dd'),
+        interviewer: '',
+        candidate: '',
+        questionSetList: []
+      }
+    },
+    setInterviewQuestionSetList (state, payload) {
+      const questionSetList = payload.questionSetList
+      for (const set of questionSetList) {
+        set.questionList = set.questionList.map((question) => {
+          return {
+            ...question,
+            comment: '',
+            rating: 1
+          }
+        })
+      }
+      state.interview.questionSetList = questionSetList
     }
   },
   actions: {

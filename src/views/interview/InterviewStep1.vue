@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
 import pageMixin from '@/mixins/page'
 
 export default {
@@ -41,20 +42,33 @@ export default {
   },
   async created () {
     this.page_setTitle({ text: '면접 시작', icon: 'mdi-account-tie' })
+    this.store_initInterview()
     this.questionSetList = await this.API.getQuestionSetList()
+
     this.selectItems = this.questionSetList.map((set) => {
       return { text: set.setName, value: set.setId }
     })
+
     setTimeout(() => {
       this.$refs.selectSet.focus()
       this.selectedQuestionSetIds = []
     }, 100)
   },
   methods: {
+    ...mapMutations({
+      store_initInterview: 'initInterview',
+      store_setInterviewQuestionSetList: 'setInterviewQuestionSetList'
+    }),
     handleNextStep () {
       const filteredSetList = this.questionSetList.filter((set) => this.selectedQuestionSetIds.includes(set.setId))
-      this.$router.push({ name: 'InterviewStep2', params: { questionSetList: filteredSetList } })
+      this.store_setInterviewQuestionSetList({ questionSetList: this._.cloneDeep(filteredSetList) })
+      this.$router.push({ name: 'InterviewStep2' })
     }
+  },
+  computed: {
+    ...mapGetters({
+      store_interview: 'interview'
+    })
   }
 }
 </script>

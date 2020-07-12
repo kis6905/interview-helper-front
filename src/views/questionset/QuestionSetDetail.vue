@@ -199,7 +199,4 @@ export default {
 .btn-area {
   padding: 0 12px;
 }
-.v-toolbar__content {
-  padding: 4px 4px;
-}
 </style>

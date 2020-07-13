@@ -6,6 +6,8 @@ import store from './store'
 import api from './assets/js/api'
 import common from './mixins/common'
 import ListCardType from '@/components/ListCardType'
+import ListCardItemEmpty from '@/components/ListCardItemEmpty'
+
 import VueLodash from 'vue-lodash'
 import lodash from 'lodash'
 import vuetify from './plugins/vuetify'
@@ -18,6 +20,7 @@ Vue.prototype.API = api
 Vue.mixin(common)
 
 Vue.component('ListCardType', ListCardType)
+Vue.component('ListCardItemEmpty', ListCardItemEmpty)
 
 new Vue({
   router,

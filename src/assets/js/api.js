@@ -66,6 +66,16 @@ export default {
     const foundSet = setList.find((e) => e.setId === set.setId)
     foundSet.setName = set.setName
     foundSet.questionList = set.questionList
+  },
+  async saveInterview (interview) {
+    // return this.request('/interview', 'post', interview)
+    let maxInterviewId = finishedInterview.reduce((e1, e2) => Number(e1.interviewId) < Number(e2.interviewId) ? e2 : e1, { interviewId: -1 })
+    maxInterviewId = Number(maxInterviewId.interviewId) + 1
+    finishedInterview.push({ ...interview, interviewId: maxInterviewId })
+  },
+  async getFinishedInterviewList () {
+    // return this.request('/interview/list', 'get')
+    return finishedInterview.sort((e1, e2) => e2.interviewDate.localeCompare(e1.interviewDate))
   }
 }
 
@@ -110,5 +120,37 @@ const setList = [{
   }, {
     questionId: '22',
     question: 'Kotlin 이란?'
+  }]
+}]
+
+const finishedInterview = [{
+  interviewId: '1',
+  interviewDate: '2020-07-01',
+  interviewer: 'develeaf',
+  interviewee: 'junior developer #1',
+  communicationRating: 3.5,
+  technicalRating: 4,
+  expectationRating: 4.5,
+  comment: '훌륭함!',
+  questionSetList: [{
+    setId: '3',
+    setName: '서버개발자 - 신입',
+    author: 'develeaf',
+    questionList: [{
+      questionId: '11',
+      question: 'Java란?',
+      comment: '개념 있음',
+      rating: 4
+    }, {
+      questionId: '12',
+      question: 'Spring 이란?',
+      comment: '적당함',
+      rating: 3.5
+    }, {
+      questionId: '13',
+      question: 'IoC 란?',
+      comment: '부족함',
+      rating: 2
+    }]
   }]
 }]

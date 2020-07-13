@@ -35,7 +35,6 @@ export default {
   },
   methods: {
     handleClickItem (item) {
-      console.log(item)
       this.$router.push({ name: 'QuestionSetDetail', params: { detail: item, mode: 'detail' } })
     },
     handleClickAdd () {

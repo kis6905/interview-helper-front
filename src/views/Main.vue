@@ -28,8 +28,8 @@
         outlined color="green lighten-2"
         data-path="/finishedinterview"
         @click="handleClickMenuBtn">
-        <v-icon class="mr-1">mdi-file-account-outline</v-icon>
-        면접 완료 목록
+        <v-icon class="mr-1">mdi-file-check-outline</v-icon>
+        면접 종료 목록
       </v-btn>
     </div>
   </div>

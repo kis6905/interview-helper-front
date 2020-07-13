@@ -68,14 +68,41 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-btn
-      class="mb-2"
-      block
-      color="green"
-      outlined
-      @click="handleClickComplete">
-      <v-icon class="mr-1">mdi-check</v-icon>완료
-    </v-btn>
+    <v-dialog
+      v-model="completionDialog">
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          class="mb-2"
+          color="green"
+          dark
+          block
+          outlined
+          v-bind="attrs"
+          v-on="on">
+          <v-icon class="mr-1">mdi-check</v-icon>완료
+        </v-btn>
+      </template>
+      <v-card color="#405473">
+        <div class="pt-4 pr-4 pl-4 pb-2">
+          면접을 완료하시겠습니까?
+        </div>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="white"
+            text
+            @click="completionDialog = false">
+            아니요
+          </v-btn>
+          <v-btn
+            color="white"
+            text
+            @click="handleClickComplete">
+            예
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -88,14 +115,16 @@ export default {
   mixins: [pageMixin],
   data: () => {
     return {
-      questionSetList: []
+      questionSetList: [],
+      completionDialog: false
     }
   },
   async created () {
   },
   methods: {
     handleClickComplete () {
-      console.log(this.store_interview)
+      this.API.saveInterview(this._.cloneDeep(this.store_interview))
+      this.$router.go(-3)
     }
   },
   computed: {

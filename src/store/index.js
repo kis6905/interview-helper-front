@@ -13,7 +13,11 @@ export default new Vuex.Store({
     interview: {
       interviewDate: '',
       interviewer: '',
-      candidate: '',
+      interviewee: '',
+      communicationRating: 0,
+      technicalRating: 0,
+      expectationRating: 0,
+      comment: '',
       questionSetList: []
     }
   },
@@ -40,7 +44,7 @@ export default new Vuex.Store({
       state.interview = {
         interviewDate: today.yyyymmdd('yyyy-mm-dd'),
         interviewer: '',
-        candidate: '',
+        interviewee: '',
         communicationRating: 0,
         technicalRating: 0,
         expectationRating: 0,

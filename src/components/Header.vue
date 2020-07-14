@@ -5,7 +5,7 @@
     </div>
     <div class="title">
       <span class="title-icon">
-        <v-icon v-if="title.icon">{{ title.icon }}</v-icon>
+        <v-icon v-if="title.icon">mdi-{{ title.icon }}</v-icon>
       </span>
       {{ title.text }}
     </div>

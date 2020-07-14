@@ -27,7 +27,6 @@ export default {
     }
   },
   async created () {
-    this.page_setTitle({ text: '질문 Set', icon: 'mdi-clipboard-text-outline' })
     const setList = await this.API.getQuestionSetList()
     this.items = setList.map(set => {
       return { ...set, title: set.setName }

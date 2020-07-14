@@ -98,7 +98,6 @@ export default {
     }
   },
   async created () {
-    this.page_setTitle({ text: '면접 시작', icon: 'mdi-account-tie' })
     this.store_initInterview()
     this.questionSetList = await this.API.getQuestionSetList()
 

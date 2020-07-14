@@ -44,7 +44,6 @@ export default {
     }
   },
   async created () {
-    this.page_setTitle({ text: '면접 종료 목록', icon: 'mdi-file-check-outline' })
     const interviewList = await this.API.getFinishedInterviewList()
     for (const interview of interviewList) {
       interview.title = interview.interviewee

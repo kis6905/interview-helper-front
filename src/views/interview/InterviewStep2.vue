@@ -34,6 +34,13 @@
                   color="yellow accent-4"
                   background-color="grey darken-1">
                 </v-rating>
+                <v-slider
+                  v-model="question.rating"
+                  step="10"
+                  thumb-size="100"
+                  hide-details
+                  ticks="always">
+                </v-slider>
               </v-col>
             </v-row>
             <v-row class="align-items-center">

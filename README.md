@@ -1,4 +1,10 @@
-# front
+# Interviewer
+* 면접관을 위한 App
+
+## 기술스택
+* Vuejs
+* Lodash
+* Vuetify
 
 ## Project setup
 ```

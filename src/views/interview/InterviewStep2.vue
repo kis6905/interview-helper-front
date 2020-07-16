@@ -82,7 +82,6 @@ export default {
     }
   },
   async created () {
-    console.log(this.store_interview)
   },
   methods: {
     handleNextStep () {

@@ -8,4 +8,3 @@
 
 ## App 소개
 ![app](./docs/img/1.PNG)
-
